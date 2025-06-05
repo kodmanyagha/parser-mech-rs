@@ -41,7 +41,7 @@ impl CharBool for &'static str {
     }
 
     fn expected(&self) -> Expected {
-        Expected::CharIn(*self)
+        Expected::CharIn(self)
     }
 }
 

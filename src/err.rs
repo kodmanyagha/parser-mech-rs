@@ -86,11 +86,3 @@ impl<'a> PErr<'a> {
         self
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    //#[test]
-    //fn it_works() {}
-}

@@ -40,9 +40,9 @@ impl Parser for &'static str {
 
     fn parse<'a>(&self, i: &PIter<'a>) -> ParseRes<'a, Self::Out> {
         let mut it = i.clone();
-        let mut s_it = self.chars();
+        let s_it = self.chars();
 
-        while let Some(n) = s_it.next() {
+        for n in s_it {
             match it.next() {
                 Some(v) if v == n => {}
                 _ => return Err(i.err_s(self)),
@@ -61,7 +61,7 @@ impl Parser for char {
 
         match it.next() {
             Some(c) if c == *self => Ok((it, c, None)),
-            _ => return Err(i.err(Expected::Char(*self))),
+            _ => Err(i.err(Expected::Char(*self))),
         }
     }
 }
